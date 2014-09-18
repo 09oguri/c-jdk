@@ -5,6 +5,7 @@
 
 #define ERR_MSG_LENGTH 512
 
+char err_msg[ERR_MSG_LENGTH] = {};
 int tests_run = 0;
 int tests = 0;
 
@@ -15,7 +16,6 @@ static char * test_charAt() {
     char expected = 'o';
     char actual = s->charAt(s, 4);
 
-    char err_msg[ERR_MSG_LENGTH] = {};
     sprintf(err_msg, "[FAILD] %s\n\texpected<%c> but actual <%c>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
@@ -31,7 +31,6 @@ static char * test_length() {
     int expected = 12;
     int actual = s->length(s);
 
-    char err_msg[ERR_MSG_LENGTH] = {};
     sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
@@ -47,8 +46,7 @@ static char * test_replace() {
     String_t *s2 = s1->replace(s1, 'o', '?');
     int expected = 12;
     int actual = s2->length(s2);
-    
-    char err_msg[ERR_MSG_LENGTH] = {};
+
     sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
