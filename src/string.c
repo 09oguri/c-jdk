@@ -54,7 +54,7 @@ int32_t equals(String_t* self, String_t* anObject) {
     return 0;
 }
 
-int32_t indexOf(String_t* self, char ch, int32_t fromIndex) {
+int32_t indexOf(String_t* self, int32_t ch, int32_t fromIndex) {
     const int32_t max = self->length(self);
     if (fromIndex < 0) {
         fromIndex = 0;
@@ -81,7 +81,7 @@ int32_t isEmpty(String_t* self) {
     return 0;
 }
 
-int32_t lastIndexOf(String_t* self, char ch, int32_t fromIndex) {
+int32_t lastIndexOf(String_t* self, int32_t ch, int32_t fromIndex) {
     if (ch < MIN_SUPPLEMENTARY_CODE_POINT) {
         const char* value = self->toString(self);
         int i = (fromIndex < self->length(self)) ? fromIndex : self->length(self);
