@@ -129,7 +129,7 @@ String_t* replace(String_t* self, char oldChar, char newChar) {
             }
         }
         if (i < len) {
-            char* buf = (char*) malloc(len);
+            char* buf = (char*) malloc(len + 1);
             if (buf == NULL) {
                 return NULL;
             }
@@ -185,7 +185,7 @@ String_t* String(char* value) {
     }
 
     s->_length = strlen(value);
-    s->_value = (char*) malloc(s->_length);
+    s->_value = (char*) malloc(s->_length + 1);
     if (s->_value == NULL) {
         free(s);
         return NULL;
