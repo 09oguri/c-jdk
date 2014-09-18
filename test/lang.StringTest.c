@@ -24,6 +24,23 @@ static char * test_charAt() {
     return 0;
 }
 
+static char* test_compareTo() {
+    char* test_name = "test_compareTo";
+
+    String_t *s1 = String("hello, world");
+    String_t *s2 = String("hello, world!");
+    int expected = 0;
+    int actual = s1->compareTo(s1, s2);
+
+    sprintf(err_msg, "[FAILD] %s\n\texpected<%c> but actual <%c>", test_name, expected, actual);
+    mu_assert(err_msg, actual < expected);
+
+    s1->del(s1);
+    s2->del(s2);
+    printf("[SUCCESS] %s\n", test_name);
+    return 0;
+}
+
 static char * test_length() {
     char* test_name = "test_length";
 
@@ -57,8 +74,9 @@ static char * test_replace() {
 }
 
 static char * all_tests() {
-    tests = 3;
+    tests = 4;
     mu_run_test(test_charAt);
+    mu_run_test(test_compareTo);
     mu_run_test(test_length);
     mu_run_test(test_replace);
     return 0;

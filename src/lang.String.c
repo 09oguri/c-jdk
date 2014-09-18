@@ -8,6 +8,25 @@ char charAt(String_t* self, int32_t index) {
     return value[index];
 }
 
+int32_t compareTo(String_t* self, String_t* anotherString) {
+    int32_t len1 = self->length(self);
+    int32_t len2 = anotherString->length(anotherString);
+    int lim = (len1 < len2) ? len1 : len2;
+    char * v1 = self->toString(self);
+    char* v2 = anotherString->toString(anotherString);
+
+    int32_t k = 0;
+    while (k < lim) {
+        char c1 = v1[k];
+        char c2 = v2[k];
+        if (c1 != c2) {
+            return c1 - c2;
+        }
+        k++;
+    }
+    return len1 - len2;
+}
+
 String_t* concat(String_t* self, String_t* str) {
     if (self == NULL || str == NULL) {
         return NULL;
@@ -174,6 +193,7 @@ String_t* String(char* value) {
     strcpy(s->_value, value);
 
     s->charAt = charAt;
+    s->compareTo = compareTo;
     s->concat = concat;
     s->del = del;
     s->endsWith = endsWith;
