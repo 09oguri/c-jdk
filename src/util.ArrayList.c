@@ -1,7 +1,7 @@
 #include "util.ArrayList.h"
 
 void add(ArrayList_t* self, int32_t index, void* e) {
-    if (index > size || index < 0) {
+    if (index > self->size(self) || index < 0) {
         return;
     }
     self->_value[index] = e;

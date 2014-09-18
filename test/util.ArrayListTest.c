@@ -13,11 +13,11 @@ static char * test_add() {
     char* test_name = "test_add";
 
     ArrayList_t *list = ArrayList(100);
-    char expected = "hello, world";
+    char* expected = "hello, world";
     list->add(list, 0, "hello, world");
-    char actual = list->get(list, 0);
+    char* actual = list->get(list, 0);
 
-    sprintf(err_msg, "[FAILD] %s\n\texpected<%c> but actual <%c>", test_name, expected, actual);
+    sprintf(err_msg, "[FAILD] %s\n\texpected<%s> but actual <%s>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
     list->del(list);
@@ -29,10 +29,10 @@ static char * test_size() {
     char* test_name = "test_size";
 
     ArrayList_t *list = ArrayList(100);
-    char expected = 100;
-    char actual = list->size(list);
+    int expected = 100;
+    int actual = list->size(list);
 
-    sprintf(err_msg, "[FAILD] %s\n\texpected<%c> but actual <%c>", test_name, expected, actual);
+    sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
     list->del(list);
