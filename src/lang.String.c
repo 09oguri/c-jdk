@@ -41,7 +41,7 @@ String_t* concat(String_t* self, String_t* str) {
     return s;
 }
 
-void del(String_t* self) {
+void lang_string_del(String_t* self) {
     free(self->_value);
     self->_length = 0;
     free(self);
@@ -195,7 +195,7 @@ String_t* String(char* value) {
     s->charAt = charAt;
     s->compareTo = compareTo;
     s->concat = concat;
-    s->del = del;
+    s->del = lang_string_del;
     s->endsWith = endsWith;
     s->equals = equals;
     s->indexOf = indexOf;

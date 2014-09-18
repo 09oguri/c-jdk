@@ -8,7 +8,7 @@ void add(ArrayList_t* self, int32_t index, void* e) {
     self->_size++;
 }
 
-void del(ArrayList_t* self) {
+void util_arraylist_del(ArrayList_t* self) {
     free(self->_value);
     self->_size = 0;
     free(self);
@@ -36,7 +36,7 @@ ArrayList_t* ArrayList(int32_t initialCapacity) {
     list->_size = 0;
 
     list->add = add;
-    list->del = del;
+    list->del = util_arraylist_del;
     list->get = get;
     list->size = size;
 

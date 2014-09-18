@@ -29,7 +29,7 @@ typedef struct String_t {
 char charAt(String_t* self, int32_t index);
 int32_t compareTo(String_t* self, String_t* anotherString);
 String_t* concat(String_t* self, String_t* str);
-void del(String_t* self);
+void lang_string_del(String_t* self);
 int32_t endsWith(String_t* self, String_t* suffix);
 int32_t equals(String_t* self, String_t* anObject);
 int32_t indexOf(String_t* self, int32_t ch, int32_t fromIndex);
