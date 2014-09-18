@@ -13,3 +13,7 @@ clean:
 test:	init rebuild ;
 	./bin/lang.StringTest.a
 	./bin/util.ArrayListTest.a
+
+examples: src/lang.String.c src/util.ArrayList.c src-examples/arraylist_string.c
+	gcc -Wall -v -o bin/arraylist_string.a -Iinclude -Ilib src/lang.String.c src/util.ArrayList.c src-examples/arraylist_string.c
+	./bin/arraylist_string.a
