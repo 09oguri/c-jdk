@@ -5,6 +5,7 @@ void add(ArrayList_t* self, int32_t index, void* e) {
         return;
     }
     self->_value[index] = e;
+    self->_size++;
 }
 
 void del(ArrayList_t* self) {
@@ -30,8 +31,9 @@ ArrayList_t* ArrayList(int32_t initialCapacity) {
         return NULL;
     }
 
-    list->_size = (initialCapacity > 0) ? initialCapacity : DEFAULT_CAPACITY;
-    list->_value = (void**) malloc(list->_size);
+    int32_t ic = (initialCapacity > 0) ? initialCapacity : DEFAULT_CAPACITY;
+    list->_value = (void**) malloc(ic);
+    list->_size = 0;
 
     list->add = add;
     list->del = del;

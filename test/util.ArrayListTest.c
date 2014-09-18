@@ -29,7 +29,10 @@ static char * test_size() {
     char* test_name = "test_size";
 
     ArrayList_t *list = ArrayList(100);
-    int expected = 100;
+    int expected = 3;
+    list->add(list, 0, "hello, world");
+    list->add(list, 1, "hello, world");
+    list->add(list, 2, "hello, world");
     int actual = list->size(list);
 
     sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
