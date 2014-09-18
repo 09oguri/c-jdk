@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "minunit.h"
-#include "string.h"
+#include "lang.String.h"
 
 #define ERR_MSG_LENGTH 512
 

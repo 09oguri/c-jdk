@@ -1,4 +1,4 @@
-#include "string.h"
+#include "lang.String.h"
 
 int main() {
     String_t *s = String("こんにちは");

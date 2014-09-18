@@ -1,5 +1,5 @@
-build: src/string.c test/test.c
-	gcc -Wall -v -o bin/test.a -Iinclude -Ilib test/test.c src/string.c > build.log 2>&1
+build: src/lang.String.c test/lang.StringTest.c
+	gcc -Wall -v -o bin/lang.StringTest.a -Iinclude -Ilib test/lang.StringTest.c src/lang.String.c > build.log 2>&1
 
 rebuild:	 clean build ;
 
@@ -7,4 +7,4 @@ clean:
 	rm -f bin/*.a *.log
 
 test: rebuild ;
-	./bin/test.a
+	./bin/lang.StringTest.a
