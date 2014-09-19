@@ -16,7 +16,7 @@ public class ArrayList_String {
         int i;
         for (i = 0; i < list.size(); i++) {
             String lang = list.get(i);
-            System.out.printf("%s\n", lang);
+            System.out.println(lang);
         }
 
         return;
