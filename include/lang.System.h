@@ -9,8 +9,8 @@ typedef struct System_t {
     int32_t (*exit)(int32_t);
 } System_t;
 
-int32_t system_exit(int32_t status);
+int32_t lang_system_exit(int32_t status);
 
-System_t System = {(PrintStream_t) {println}, system_exit};
+System_t System = {(PrintStream_t) {println}, lang_system_exit};
 
 #endif
