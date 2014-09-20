@@ -20,6 +20,7 @@ void add(ArrayList_t* self, int32_t index, void* e);
 void util_arraylist_del(ArrayList_t* self);
 void* get(ArrayList_t* self, int32_t index);
 int32_t size(ArrayList_t* self);
-ArrayList_t* ArrayList(int32_t initialCapacity);
+//ArrayList_t* ArrayList(int32_t initialCapacity);
+ArrayList_t ArrayList(int32_t initialCapacity);
 
 #endif

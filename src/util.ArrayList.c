@@ -25,20 +25,25 @@ int32_t size(ArrayList_t* self) {
     return self->_size;
 }
 
-ArrayList_t* ArrayList(int32_t initialCapacity) {
-    ArrayList_t *list = (ArrayList_t*) malloc(sizeof(ArrayList_t));
-    if (list == NULL) {
-        return NULL;
-    }
+// ArrayList_t* ArrayList(int32_t initialCapacity) {
+//     ArrayList_t *list = (ArrayList_t*) malloc(sizeof(ArrayList_t));
+//     if (list == NULL) {
+//         return NULL;
+//     }
 
+//     int32_t ic = (initialCapacity > 0) ? initialCapacity : DEFAULT_CAPACITY;
+//     list->_value = (void**) malloc(ic);
+//     list->_size = 0;
+
+//     list->add = add;
+//     list->del = util_arraylist_del;
+//     list->get = get;
+//     list->size = size;
+
+//     return list;
+// }
+
+ArrayList_t ArrayList(int32_t initialCapacity) {
     int32_t ic = (initialCapacity > 0) ? initialCapacity : DEFAULT_CAPACITY;
-    list->_value = (void**) malloc(ic);
-    list->_size = 0;
-
-    list->add = add;
-    list->del = util_arraylist_del;
-    list->get = get;
-    list->size = size;
-
-    return list;
+    return (ArrayList_t) {(void**) malloc(ic), 0, add, util_arraylist_del, get, size};
 }
