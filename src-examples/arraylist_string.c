@@ -3,7 +3,6 @@
 #include "util.ArrayList.h"
 
 int main() {
-    System_t *sys = System();
     ArrayList_t *list = ArrayList(10);
 
     list->add(list, 0, String("C"));
@@ -17,7 +16,7 @@ int main() {
     int i;
     for (i = 0; i < list->size(list); i++) {
         String_t *lang = list->get(list, i);
-        sys->out->println(lang);
+        System.out.println(lang);
     }
 
     return 0;
