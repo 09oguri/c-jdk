@@ -14,7 +14,6 @@ typedef struct String_t {
     char (*charAt)(struct String_t*, int32_t);
     int32_t (*compareTo)(struct String_t*, struct String_t*);
     struct String_t (*concat)(struct String_t*, struct String_t*);
-    void (*del)(struct String_t*);
     int32_t (*endsWith)(struct String_t*, struct String_t*);
     int32_t (*equals)(struct String_t*, struct String_t*);
     int32_t (*indexOf)(struct String_t*, int32_t, int32_t);
@@ -29,7 +28,6 @@ typedef struct String_t {
 char charAt(String_t* self, int32_t index);
 int32_t compareTo(String_t* self, String_t* anotherString);
 String_t concat(String_t* self, String_t* str);
-void lang_string_del(String_t* self);
 int32_t endsWith(String_t* self, String_t* suffix);
 int32_t equals(String_t* self, String_t* anObject);
 int32_t indexOf(String_t* self, int32_t ch, int32_t fromIndex);

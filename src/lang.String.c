@@ -40,12 +40,6 @@ String_t concat(String_t* self, String_t* str) {
     return String(value);
 }
 
-void lang_string_del(String_t* self) {
-    free(self->_value);
-    self->_length = 0;
-    free(self);
-}
-
 int32_t endsWith(String_t* self, String_t* suffix) {
     return startsWith(self, suffix, self->length(self) - suffix->length(suffix));
 }
@@ -170,6 +164,6 @@ char* toString(String_t* self) {
 }
 
 String_t String(char* value) {
-    return (String_t) {value, strlen(value), charAt, compareTo, concat, lang_string_del, endsWith, equals,
+    return (String_t) {value, strlen(value), charAt, compareTo, concat, endsWith, equals,
         indexOf, isEmpty, lastIndexOf, length, replace, startsWith, toString};
 }
