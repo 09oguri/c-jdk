@@ -19,7 +19,6 @@ static char * test_charAt() {
     sprintf(err_msg, "[FAILD] %s\n\texpected<%c> but actual <%c>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
-    // s->del(s);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }
@@ -35,8 +34,6 @@ static char* test_compareTo() {
     sprintf(err_msg, "[FAILD] %s\n\texpected<%c> but actual <%c>", test_name, expected, actual);
     mu_assert(err_msg, actual < expected);
 
-    // s1->del(s1);
-    // s2->del(s2);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }
@@ -51,7 +48,6 @@ static char * test_length() {
     sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
-    // s->del(s);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }
@@ -67,8 +63,6 @@ static char * test_replace() {
     sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
-    // s1->del(s1);
-    // s2->del(s2);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }

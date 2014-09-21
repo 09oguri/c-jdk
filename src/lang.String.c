@@ -37,7 +37,6 @@ String_t concat(String_t* self, String_t* str) {
     strcpy(value, self->toString(self));
     strcat(value, str->toString(str));
 
-    //String_t *s = String(value);
     return String(value);
 }
 
@@ -177,37 +176,4 @@ char* toString(String_t* self) {
 String_t String(char* value) {
     return (String_t) {value, strlen(value), charAt, compareTo, concat, lang_string_del, endsWith, equals,
         indexOf, isEmpty, lastIndexOf, length, replace, startsWith, toString};
-
-    // if (value == NULL) {
-    //     return NULL;
-    // }
-
-    // String_t *s = (String_t*) malloc(sizeof(String_t));
-    // if (s == NULL) {
-    //     return NULL;
-    // }
-
-    // s->_length = strlen(value);
-    // s->_value = (char*) malloc(s->_length + 1);
-    // if (s->_value == NULL) {
-    //     free(s);
-    //     return NULL;
-    // }
-    // strcpy(s->_value, value);
-
-    // s->charAt = charAt;
-    // s->compareTo = compareTo;
-    // s->concat = concat;
-    // s->del = lang_string_del;
-    // s->endsWith = endsWith;
-    // s->equals = equals;
-    // s->indexOf = indexOf;
-    // s->isEmpty = isEmpty;
-    // s->lastIndexOf = lastIndexOf;
-    // s->length = length;
-    // s->replace = replace;
-    // s->startsWith = startsWith;
-    // s->toString = toString;
-
-    // return s;
 }
