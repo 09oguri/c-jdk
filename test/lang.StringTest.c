@@ -57,11 +57,12 @@ static char * test_replace() {
 
     String_t s1 = String("hello, world");
     String_t s2 = s1.replace(&s1, 'o', '?');
-    int expected = 12;
-    int actual = s2.length(&s2);
+    char* expected = "hell?, w?rld";
+    char* actual = s2.toString(&s2);
 
-    sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
-    mu_assert(err_msg, actual == expected);
+    sprintf(err_msg, "[FAILD] %s\n\texpected<%s> but actual <%s>", test_name, expected, actual);
+    mu_assert(err_msg, actual[4] == expected[4]);
+    mu_assert(err_msg, actual[8] == expected[8]);
 
     printf("[SUCCESS] %s\n", test_name);
     return 0;

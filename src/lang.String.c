@@ -128,10 +128,7 @@ String_t replace(String_t* self, char oldChar, char newChar) {
             }
         }
         if (i < len) {
-            char* buf = (char*) malloc(len + 1);
-            if (buf == NULL) {
-                return String("");
-            }
+            char buf[len + 1];
             int j;
             for (j = 0; j < i; j++) {
                 buf[j] = val[j];
@@ -141,9 +138,8 @@ String_t replace(String_t* self, char oldChar, char newChar) {
                 buf[i] = (c == oldChar) ? newChar : c;
                 i++;
             }
-            String_t str = String(buf);
-            free(buf);
-            return str;
+            buf[i] = '\0';
+            return String(buf);
         }
     }
     return String("");
