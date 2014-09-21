@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "minunit.h"
+#include "lang.String.h"
 #include "util.ArrayList.h"
 
 #define ERR_MSG_LENGTH 512
@@ -14,13 +15,14 @@ static char * test_add() {
 
     ArrayList_t list = ArrayList(100);
     char* expected = "hello, world";
-    list.add(&list, 0, "hello, world");
-    char* actual = list.get(&list, 0);
+    list.add(&list, 0, String(expected));
+    String_t str = list.get(&list, 0);
+    char* actual = str.toString(&str);
 
     sprintf(err_msg, "[FAILD] %s\n\texpected<%s> but actual <%s>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
-    //list.del(&list);
+    list.del(&list);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }
@@ -30,20 +32,22 @@ static char * test_init() {
 
     ArrayList_t list1 = ArrayList(100);
     ArrayList_t list2 = ArrayList(100);
-    list1.add(&list1, 0, "hello, world0");
-    list1.add(&list1, 1, "hello, world1");
-    list1.add(&list1, 2, "hello, world2");
-    list2.add(&list2, 0, "hello, world3");
-    list2.add(&list2, 1, "hello, world4");
-    list2.add(&list2, 2, "hello, world5");
+    list1.add(&list1, 0, String("hello, world0"));
+    list1.add(&list1, 1, String("hello, world1"));
+    list1.add(&list1, 2, String("hello, world2"));
+    list2.add(&list2, 0, String("hello, world3"));
+    list2.add(&list2, 1, String("hello, world4"));
+    list2.add(&list2, 2, String("hello, world5"));
 
     char* expected = "hello, world0";
-    char* actual = list1.get(&list1, 0);
+    String_t str = list1.get(&list1, 0);
+    char* actual = str.toString(&str);
 
-    sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
+    sprintf(err_msg, "[FAILD] %s\n\texpected<%s> but actual <%s>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
-    //list.del(&list);
+    list1.del(&list1);
+    list2.del(&list2);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }
@@ -53,15 +57,15 @@ static char * test_size() {
 
     ArrayList_t list = ArrayList(100);
     int expected = 3;
-    list.add(&list, 0, "hello, world");
-    list.add(&list, 1, "hello, world");
-    list.add(&list, 2, "hello, world");
+    list.add(&list, 0, String("hello, world"));
+    list.add(&list, 1, String("hello, world"));
+    list.add(&list, 2, String("hello, world"));
     int actual = list.size(&list);
 
     sprintf(err_msg, "[FAILD] %s\n\texpected<%d> but actual <%d>", test_name, expected, actual);
     mu_assert(err_msg, actual == expected);
 
-    //list.del(&list);
+    list.del(&list);
     printf("[SUCCESS] %s\n", test_name);
     return 0;
 }

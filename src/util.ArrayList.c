@@ -1,6 +1,6 @@
 #include "util.ArrayList.h"
 
-void add(ArrayList_t* self, int32_t index, void* e) {
+void add(ArrayList_t* self, int32_t index, String_t e) {
     if (index > self->size(self) || index < 0) {
         return;
     }
@@ -11,12 +11,12 @@ void add(ArrayList_t* self, int32_t index, void* e) {
 void util_arraylist_del(ArrayList_t* self) {
     free(self->_value);
     self->_size = 0;
-    free(self);
+    //free(self);
 }
 
-void* get(ArrayList_t* self, int32_t index) {
+String_t get(ArrayList_t* self, int32_t index) {
     if (index >= self->size(self) || index < 0) {
-        return NULL;
+        return String("");
     }
     return self->_value[index];
 }
@@ -45,5 +45,5 @@ int32_t size(ArrayList_t* self) {
 
 ArrayList_t ArrayList(int32_t initialCapacity) {
     int32_t ic = (initialCapacity > 0) ? initialCapacity : DEFAULT_CAPACITY;
-    return (ArrayList_t) {(void**) malloc(ic), 0, add, util_arraylist_del, get, size};
+    return (ArrayList_t) {(String_t*) malloc(sizeof(String_t) * ic), 0, add, util_arraylist_del, get, size};
 }

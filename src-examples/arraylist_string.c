@@ -15,8 +15,8 @@ int main() {
 
     int i;
     for (i = 0; i < list.size(&list); i++) {
-        String_t *lang = list.get(&list, i);
-        System.out.println(lang);
+        String_t lang = list.get(&list, i);
+        System.out.println(&lang);
     }
 
     return 0;

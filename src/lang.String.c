@@ -27,9 +27,9 @@ int32_t compareTo(String_t* self, String_t* anotherString) {
     return len1 - len2;
 }
 
-String_t* concat(String_t* self, String_t* str) {
+String_t concat(String_t* self, String_t* str) {
     if (self == NULL || str == NULL) {
-        return NULL;
+        return String("");
     }
 
     int32_t len = self->length(self) + str->length(str);
@@ -37,8 +37,8 @@ String_t* concat(String_t* self, String_t* str) {
     strcpy(value, self->toString(self));
     strcat(value, str->toString(str));
 
-    String_t *s = String(value);
-    return s;
+    //String_t *s = String(value);
+    return String(value);
 }
 
 void lang_string_del(String_t* self) {
@@ -117,7 +117,7 @@ int32_t length(String_t* self) {
     return self->_length;
 }
 
-String_t* replace(String_t* self, char oldChar, char newChar) {
+String_t replace(String_t* self, char oldChar, char newChar) {
     if (oldChar != newChar) {
         int len = self->length(self);
         int i = -1;
@@ -131,7 +131,7 @@ String_t* replace(String_t* self, char oldChar, char newChar) {
         if (i < len) {
             char* buf = (char*) malloc(len + 1);
             if (buf == NULL) {
-                return NULL;
+                return String("");
             }
             int j;
             for (j = 0; j < i; j++) {
@@ -142,12 +142,12 @@ String_t* replace(String_t* self, char oldChar, char newChar) {
                 buf[i] = (c == oldChar) ? newChar : c;
                 i++;
             }
-            String_t *str = String(buf);
+            String_t str = String(buf);
             free(buf);
             return str;
         }
     }
-    return self;
+    return String("");
 }
 
 int32_t startsWith(String_t* self, String_t* prefix, int32_t toffset) {
@@ -174,37 +174,40 @@ char* toString(String_t* self) {
     return self->_value;
 }
 
-String_t* String(char* value) {
-    if (value == NULL) {
-        return NULL;
-    }
+String_t String(char* value) {
+    return (String_t) {value, strlen(value), charAt, compareTo, concat, lang_string_del, endsWith, equals,
+        indexOf, isEmpty, lastIndexOf, length, replace, startsWith, toString};
 
-    String_t *s = (String_t*) malloc(sizeof(String_t));
-    if (s == NULL) {
-        return NULL;
-    }
+    // if (value == NULL) {
+    //     return NULL;
+    // }
 
-    s->_length = strlen(value);
-    s->_value = (char*) malloc(s->_length + 1);
-    if (s->_value == NULL) {
-        free(s);
-        return NULL;
-    }
-    strcpy(s->_value, value);
+    // String_t *s = (String_t*) malloc(sizeof(String_t));
+    // if (s == NULL) {
+    //     return NULL;
+    // }
 
-    s->charAt = charAt;
-    s->compareTo = compareTo;
-    s->concat = concat;
-    s->del = lang_string_del;
-    s->endsWith = endsWith;
-    s->equals = equals;
-    s->indexOf = indexOf;
-    s->isEmpty = isEmpty;
-    s->lastIndexOf = lastIndexOf;
-    s->length = length;
-    s->replace = replace;
-    s->startsWith = startsWith;
-    s->toString = toString;
+    // s->_length = strlen(value);
+    // s->_value = (char*) malloc(s->_length + 1);
+    // if (s->_value == NULL) {
+    //     free(s);
+    //     return NULL;
+    // }
+    // strcpy(s->_value, value);
 
-    return s;
+    // s->charAt = charAt;
+    // s->compareTo = compareTo;
+    // s->concat = concat;
+    // s->del = lang_string_del;
+    // s->endsWith = endsWith;
+    // s->equals = equals;
+    // s->indexOf = indexOf;
+    // s->isEmpty = isEmpty;
+    // s->lastIndexOf = lastIndexOf;
+    // s->length = length;
+    // s->replace = replace;
+    // s->startsWith = startsWith;
+    // s->toString = toString;
+
+    // return s;
 }
